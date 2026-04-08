@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 98%;
+    --foreground: 338 20% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 338 20% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 338 20% 8%;
+    --primary: 338 50% 30%;
+    --primary-foreground: 338 20% 97%;
+    --secondary: 338 15% 95%;
+    --secondary-foreground: 338 20% 12%;
+    --muted: 338 10% 95%;
+    --muted-foreground: 338 10% 45%;
+    --accent: 338 15% 93%;
+    --accent-foreground: 338 20% 12%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 338 12% 90%;
+    --input: 338 12% 90%;
+    --ring: 338 50% 30%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 338 20% 4%;
+    --foreground: 0 0% 95%;
+    --card: 338 15% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 338 15% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 338 35% 45%;
+    --primary-foreground: 338 20% 97%;
+    --secondary: 338 10% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 338 8% 15%;
+    --muted-foreground: 338 10% 65%;
+    --accent: 338 10% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 338 10% 16%;
+    --input: 338 10% 16%;
+    --ring: 338 35% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background-color: hsl(338 50% 30% / 0.12);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography utilities                                               */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  }
+  .font-sans {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* WhatsApp floating button                                           */
+/* ------------------------------------------------------------------ */
+.whatsapp-float-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  animation: whatsapp-enter 0.4s ease-out both;
+}
+
+.whatsapp-float {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+@keyframes whatsapp-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: disable animations for users who prefer it         */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

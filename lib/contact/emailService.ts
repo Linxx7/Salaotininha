@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { env } from "@/lib/env";
 import type { ContactFormData } from "./contactTypes";
 
-const resend = new Resend(env.RESEND_API_KEY);
-
 /** Escapes HTML special characters to prevent XSS in email HTML */
 function escapeHtml(value: string): string {
   return value
@@ -18,9 +16,15 @@ function escapeHtml(value: string): string {
 export async function sendContactEmail(data: ContactFormData): Promise<void> {
   const { name, email, subject, message } = data;
 
+  if (!env.RESEND_API_KEY) {
+    throw new Error("RESEND_API_KEY não configurado");
+  }
+
   if (!env.CONTACT_EMAIL) {
     throw new Error("CONTACT_EMAIL não configurado");
   }
+
+  const resend = new Resend(env.RESEND_API_KEY);
 
   // Use verified domain address when configured, otherwise fall back to Resend test address.
   // Note: onboarding@resend.dev only sends to the Resend account owner's email.

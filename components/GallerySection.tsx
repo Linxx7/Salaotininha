@@ -12,28 +12,28 @@ export function GallerySection({ items }: GallerySectionProps) {
   return (
     <section
       aria-labelledby="gallery-heading"
-      className="bg-[#faf8f6] px-4 py-24 sm:py-32"
+      className="bg-[#faf8f6] px-4 py-24 sm:py-32 dark:bg-[#0d0608]"
     >
       <SectionContainer>
         <div className="mb-16 text-center">
           <SectionEyebrow className="mb-4">Nosso Portfólio</SectionEyebrow>
           <h2
             id="gallery-heading"
-            className="font-serif text-4xl font-bold text-gray-900 sm:text-5xl"
+            className="font-serif text-4xl font-bold text-gray-900 sm:text-5xl dark:text-white"
           >
             Trabalhos que inspiram
           </h2>
-          <p className="mt-5 mx-auto max-w-lg text-base leading-relaxed text-gray-500">
+          <p className="mt-5 mx-auto max-w-lg text-base leading-relaxed text-gray-500 dark:text-gray-400">
             Cada resultado reflete cuidado, técnica e atenção aos detalhes.
             Veja alguns dos nossos trabalhos recentes.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <article
               key={item.id}
-              className="group relative overflow-hidden rounded-2xl bg-wine-100"
+              className="group relative overflow-hidden rounded-2xl bg-wine-100 dark:bg-wine-900"
             >
               <div className="relative aspect-[4/5] w-full">
                 <Image
@@ -41,7 +41,7 @@ export function GallerySection({ items }: GallerySectionProps) {
                   alt={item.title}
                   fill
                   quality={80}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 {/* Overlay on hover */}

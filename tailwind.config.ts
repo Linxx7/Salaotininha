@@ -25,6 +25,7 @@ const config: Config = {
           700: "#5c2d43",
           800: "#3d1a2a",
           900: "#2a1019",
+          950: "#1a0910",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

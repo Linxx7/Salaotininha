@@ -11,27 +11,13 @@ import type { PortfolioReader } from "./portfolioRepository";
 import type { PortfolioItem, PortfolioCategory } from "./portfolioTypes";
 
 // ---------------------------------------------------------------------------
-// Static dataset — mirrors the 6 works already shown in the UI.
+// Static dataset — mirrors the 4 works already shown in the UI.
 // imageUrl values use placeholder paths; swap for real images or Sanity URLs.
 // ---------------------------------------------------------------------------
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: "work-1",
-    slug: "balayage-dourado",
-    title: "Balayage Dourado",
-    shortDescription:
-      "Técnica de balayage com tons dourados e acobreados, efeito sol natural.",
-    category: "Coloração",
-    imageUrl: "/images/gallery/balayage.jpg",
-    imageAlt: "Cabelo com balayage em tons dourados e acobreados",
-    tags: ["coloração", "balayage"],
-    featured: true,
-    order: 1,
-    createdAt: "2025-03-10T10:00:00Z",
-  },
-  {
-    id: "work-2",
     slug: "corte-moderno",
     title: "Corte Moderno",
     shortDescription:
@@ -40,12 +26,12 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     imageUrl: "/images/gallery/corte-moderno.jpg",
     imageAlt: "Cabelo com corte em camadas e finalização em escova",
     tags: ["corte", "escova"],
-    featured: false,
-    order: 2,
+    featured: true,
+    order: 1,
     createdAt: "2025-03-12T10:00:00Z",
   },
   {
-    id: "work-3",
+    id: "work-2",
     slug: "progressiva-premium",
     title: "Progressiva Premium",
     shortDescription:
@@ -55,25 +41,11 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     imageAlt: "Cabelo liso e brilhante após progressiva premium",
     tags: ["química", "progressiva"],
     featured: true,
-    order: 3,
+    order: 2,
     createdAt: "2025-03-15T10:00:00Z",
   },
   {
-    id: "work-4",
-    slug: "nail-art-exclusiva",
-    title: "Nail Art Exclusiva",
-    shortDescription:
-      "Design exclusivo e personalizado com esmaltação de longa duração.",
-    category: "Unhas",
-    imageUrl: "/images/gallery/nail-art.jpg",
-    imageAlt: "Unhas decoradas com nail art exclusiva colorida",
-    tags: ["manicure", "nail art"],
-    featured: false,
-    order: 4,
-    createdAt: "2025-03-17T10:00:00Z",
-  },
-  {
-    id: "work-5",
+    id: "work-3",
     slug: "mechas-iluminadas",
     title: "Mechas Iluminadas",
     shortDescription:
@@ -83,11 +55,11 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     imageAlt: "Cabelo com mechas iluminadas sutis e naturais",
     tags: ["coloração", "mechas"],
     featured: true,
-    order: 5,
+    order: 3,
     createdAt: "2025-03-20T10:00:00Z",
   },
   {
-    id: "work-6",
+    id: "work-4",
     slug: "hidratacao-profunda",
     title: "Hidratação Profunda",
     shortDescription:
@@ -97,7 +69,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     imageAlt: "Cabelo brilhante após tratamento de hidratação profunda",
     tags: ["tratamento", "hidratação"],
     featured: false,
-    order: 6,
+    order: 4,
     createdAt: "2025-03-22T10:00:00Z",
   },
 ];

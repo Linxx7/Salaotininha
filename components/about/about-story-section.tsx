@@ -15,8 +15,8 @@ export function AboutStorySection() {
           {/* Left: image */}
           <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-wine-100 sm:h-[460px]">
             <Image
-              src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=900&q=80"
-              alt="Detalhe de penteado — Salão Tininha"
+              src="/images/salon-reception.png"
+              alt="Recepção do Salão Tininha"
               fill
               quality={80}
               sizes="(max-width: 1024px) 100vw, 50vw"

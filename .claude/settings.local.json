@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "Bash(find /c/Users/ricar/Desktop/Salaotininha/components /c/Users/ricar/Desktop/Salaotininha/app -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" \\\\\\) ! -path \"*node_modules*\" ! -path \"*.next*\" -exec grep -l \"Image\\\\|src=.*\\\\\\\\.png\\\\|src=.*\\\\\\\\.jpg\\\\|src=.*\\\\\\\\.svg\\\\|backgroundImage\" {} \\\\;)",
+      "Bash(find c:\\\\Users\\\\ricar\\\\Desktop\\\\Salaotininha -type f \\\\\\( -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.mjs\" \\\\\\) ! -path \"*/node_modules/*\" ! -path \"*/.next/*\" -exec grep -l \"sk_\\\\|pk_\\\\|rk_\\\\|ak_\\\\|STRIPE\\\\|TWILIO\\\\|SENDGRID\\\\|GITHUB\\\\|OPENAI\" {} \\\\;)",
+      "Bash(gh auth:*)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 33448 //F)",
+      "Bash(tasklist //FI \"PID eq 41500\")",
+      "Bash(taskkill //PID 41500 //F)",
+      "Bash(taskkill //PID 40748 //F)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npm uninstall:*)",
+      "Bash(curl -s -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"name\":\"Teste\",\"email\":\"teste@exemplo.com\",\"subject\":\"Teste do formulario\",\"message\":\"Esta e uma mensagem de teste para verificar se o email esta funcionando corretamente.\"}')",
+      "Bash(curl -s -X POST http://localhost:3001/api/contact -H \"Content-Type: application/json\" -d '{\"name\":\"Teste\",\"email\":\"teste@exemplo.com\",\"subject\":\"Teste do formulario\",\"message\":\"Esta e uma mensagem de teste para verificar se o email esta funcionando corretamente.\"}')",
+      "Bash(git add *)"
+    ]
+  }
+}

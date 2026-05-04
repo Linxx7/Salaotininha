@@ -9,4 +9,6 @@ export type BookingRequest = BookingFormValues;
 export interface BookingResponse {
   success: boolean;
   message: string;
+  /** WhatsApp deep-link so the client can open chat with booking details */
+  whatsappUrl?: string;
 }

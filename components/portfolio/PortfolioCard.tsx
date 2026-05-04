@@ -52,7 +52,7 @@ export function PortfolioCard({
           : undefined
       }
       className={[
-        "group relative overflow-hidden rounded-2xl bg-wine-100",
+        "group relative overflow-hidden rounded-2xl bg-wine-100 dark:bg-wine-900",
         isInteractive ? "cursor-pointer focus-visible:ring-2 focus-visible:ring-wine-500 focus-visible:outline-none" : "",
       ]
         .join(" ")
@@ -65,7 +65,7 @@ export function PortfolioCard({
           alt={imageAlt ?? title}
           fill
           quality={80}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 640px) 100vw, 50vw"
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
 

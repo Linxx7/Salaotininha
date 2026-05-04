@@ -5,7 +5,8 @@ import {
   buildLocalBusinessSchema,
   buildFAQPageSchema,
 } from "@/lib/seo/schemas";
-import { HeroSection } from "@/components/HeroSection";
+import { HeroSection } from "@/components/hero";
+import { heroConfig } from "@/config/hero.config";
 import { ServicesSection } from "@/components/ServicesSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { PortfolioSection } from "@/components/portfolio";
@@ -47,7 +48,7 @@ export default async function HomePage() {
     <>
       <JsonLd schema={buildLocalBusinessSchema()} />
       {faqs.length > 0 && <JsonLd schema={buildFAQPageSchema(faqs)} />}
-      <HeroSection />
+      <HeroSection config={heroConfig} />
       <ServicesSection />
       {portfolioItems.length > 0 && (
         <PortfolioSection items={portfolioItems} />

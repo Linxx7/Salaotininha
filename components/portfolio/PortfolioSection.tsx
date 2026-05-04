@@ -27,7 +27,7 @@ export function PortfolioSection({ items }: PortfolioSectionProps) {
   return (
     <section
       aria-labelledby="portfolio-heading"
-      className="bg-[#faf8f6] px-4 py-24 sm:py-32"
+      className="bg-[#faf8f6] px-4 py-24 sm:py-32 dark:bg-[#0d0608]"
     >
       <SectionContainer>
         {/* ── Section header ── */}
@@ -35,18 +35,18 @@ export function PortfolioSection({ items }: PortfolioSectionProps) {
           <SectionEyebrow className="mb-4">Nosso Portfólio</SectionEyebrow>
           <h2
             id="portfolio-heading"
-            className="font-serif text-4xl font-bold text-gray-900 sm:text-5xl"
+            className="font-serif text-4xl font-bold text-gray-900 sm:text-5xl dark:text-white"
           >
             Trabalhos que inspiram
           </h2>
-          <p className="mt-5 mx-auto max-w-lg text-base leading-relaxed text-gray-500">
+          <p className="mt-5 mx-auto max-w-lg text-base leading-relaxed text-gray-500 dark:text-gray-400">
             Cada resultado reflete cuidado, técnica e atenção aos detalhes.
             Veja alguns dos nossos trabalhos recentes.
           </p>
         </div>
 
         {/* ── Responsive grid ── */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <PortfolioCard key={item.id} item={item} />
           ))}

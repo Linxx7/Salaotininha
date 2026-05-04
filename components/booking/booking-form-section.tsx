@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, AlertCircle, MessageCircle } from "lucide-react";
 import { useBookingForm } from "@/hooks/useBookingForm";
-import type { ServiceCategory } from "@/lib/domain/types";
+import type { IServiceCategory } from "@/lib/domain/types";
 
 interface BookingFormSectionProps {
-  serviceCategories: ServiceCategory[];
+  serviceCategories: IServiceCategory[];
 }
 
 export function BookingFormSection({ serviceCategories }: BookingFormSectionProps) {
@@ -25,24 +25,38 @@ export function BookingFormSection({ serviceCategories }: BookingFormSectionProp
 
   if (result?.success) {
     return (
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white dark:bg-zinc-950 py-16 sm:py-24">
         <SectionContainer narrow>
           <div className="mx-auto max-w-md text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+              <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="font-serif text-3xl font-bold text-gray-900">
+            <h2 className="font-serif text-3xl font-bold text-gray-900 dark:text-gray-100">
               Agendamento enviado!
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-gray-500">
+            <p className="mt-4 text-base leading-relaxed text-gray-500 dark:text-gray-400">
               {result.message}
             </p>
-            <Button
-              onClick={reset}
-              className="mt-8 rounded-full bg-wine-700 px-8 text-sm font-semibold uppercase tracking-widest text-white hover:bg-wine-800"
-            >
-              Fazer novo agendamento
-            </Button>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              {result.whatsappUrl && (
+                <a
+                  href={result.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-green-600 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-md transition-all hover:bg-green-700 hover:shadow-lg"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Confirmar pelo WhatsApp
+                </a>
+              )}
+              <Button
+                onClick={reset}
+                variant="outline"
+                className="rounded-full border-wine-300 dark:border-wine-700 px-8 text-sm font-semibold uppercase tracking-widest text-wine-700 dark:text-wine-300 hover:bg-wine-50 dark:hover:bg-wine-950"
+              >
+                Fazer novo agendamento
+              </Button>
+            </div>
           </div>
         </SectionContainer>
       </section>
@@ -50,22 +64,22 @@ export function BookingFormSection({ serviceCategories }: BookingFormSectionProp
   }
 
   const inputClasses =
-    "h-12 rounded-sm border-0 bg-[#f8f5f6] px-4 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-wine-300 focus-visible:ring-offset-0";
+    "h-12 rounded-sm border-0 bg-[#f8f5f6] dark:bg-zinc-800 px-4 text-foreground placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus-visible:ring-1 focus-visible:ring-wine-300 dark:focus-visible:ring-wine-500 focus-visible:ring-offset-0";
   const labelClasses =
-    "text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-900";
-  const errorClasses = "mt-1 text-xs text-red-500";
+    "text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-900 dark:text-gray-100";
+  const errorClasses = "mt-1 text-xs text-red-500 dark:text-red-400";
 
   return (
-    <section className="bg-white py-16 sm:py-24" aria-labelledby="booking-form-heading">
+    <section className="bg-white dark:bg-zinc-950 py-16 sm:py-24" aria-labelledby="booking-form-heading">
       <SectionContainer narrow>
         <h2 id="booking-form-heading" className="sr-only">
           Formulário de agendamento
         </h2>
 
         {result && !result.success && (
-          <div className="mb-8 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4">
-            <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" />
-            <p className="text-sm text-red-700">{result.message}</p>
+          <div className="mb-8 flex items-start gap-3 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/30 p-4">
+            <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500 dark:text-red-400" />
+            <p className="text-sm text-red-700 dark:text-red-300">{result.message}</p>
           </div>
         )}
 
@@ -145,14 +159,14 @@ export function BookingFormSection({ serviceCategories }: BookingFormSectionProp
               <select
                 id="booking-service"
                 {...register("serviceId")}
-                className={`${inputClasses} appearance-none`}
+                className={`${inputClasses} appearance-none text-foreground`}
               >
                 <option value="">Selecione um serviço</option>
                 {serviceCategories.map((cat) => (
-                  <optgroup key={cat.id} label={cat.title}>
-                    {cat.items.map((s) => (
+                  <optgroup key={cat.id} label={cat.name}>
+                    {cat.services.map((s) => (
                       <option key={s.id} value={s.id}>
-                        {s.name} — {s.price}
+                        {s.title}{s.price_from !== null ? ` — A partir de R$${(s.price_from / 100).toFixed(0)}` : ""}
                       </option>
                     ))}
                   </optgroup>
@@ -209,7 +223,7 @@ export function BookingFormSection({ serviceCategories }: BookingFormSectionProp
               {...register("notes")}
               placeholder="Alguma informação adicional? (opcional)"
               rows={3}
-              className="resize-none rounded-sm border-0 bg-[#f8f5f6] p-4 placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-wine-300 focus-visible:ring-offset-0"
+              className="resize-none rounded-sm border-0 bg-[#f8f5f6] dark:bg-zinc-800 p-4 text-foreground placeholder:text-gray-400 dark:placeholder:text-zinc-500 focus-visible:ring-1 focus-visible:ring-wine-300 dark:focus-visible:ring-wine-500 focus-visible:ring-offset-0"
             />
             {errors.notes && (
               <p className={errorClasses}>{errors.notes.message}</p>
@@ -231,7 +245,7 @@ export function BookingFormSection({ serviceCategories }: BookingFormSectionProp
             </Button>
           </div>
 
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-400 dark:text-zinc-500">
             * Campos obrigatórios. Entraremos em contato pelo WhatsApp para confirmar.
           </p>
         </form>

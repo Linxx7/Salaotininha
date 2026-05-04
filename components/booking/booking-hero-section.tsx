@@ -15,8 +15,8 @@ export function BookingHeroSection() {
           Agende seu horário
         </h1>
         <p className="mt-5 text-base leading-relaxed text-wine-200 sm:text-lg">
-          Preencha o formulário abaixo e entraremos em contato para confirmar
-          seu agendamento. Rápido, simples e sem complicação.
+          Escolha o melhor dia e horário para você diretamente na nossa agenda.
+          A confirmação será enviada por WhatsApp.
         </p>
       </div>
     </section>

@@ -1,19 +1,36 @@
 // lib/domain/types.ts
 // Central domain types — Single Responsibility: each interface models one entity
 
-export interface Service {
+/** Single service line item — ISP: only presentation-relevant fields */
+export interface IServiceItem {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  price: string;
+  /** Price in cents, or null when price is not yet defined */
+  price_from: number | null;
   highlight?: boolean;
 }
 
-export interface ServiceCategory {
+/** A named group of services — ISP: no rendering logic, just data shape */
+export interface IServiceCategory {
   id: string;
-  title: string;
-  items: Service[];
+  name: string;
+  services: IServiceItem[];
 }
+
+/** Policy notice attached to a category (e.g. retoque rules) */
+export interface IServiceNotice {
+  category_id: string;
+  text: string;
+}
+
+/** DIP: components depend on this contract, not on fetch() or JSON imports */
+export interface IServiceRepository {
+  getCategories(): Promise<IServiceCategory[]>;
+  getAllServices(): Promise<IServiceItem[]>;
+  getNotices(): Promise<IServiceNotice[]>;
+}
+
 
 export interface Testimonial {
   id: number;

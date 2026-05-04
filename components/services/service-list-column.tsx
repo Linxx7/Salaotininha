@@ -2,11 +2,11 @@
 // Single Responsibility: renders one category column with its service list
 
 import { cn } from "@/lib/utils";
-import type { ServiceCategory } from "@/types/services";
+import type { IServiceCategory } from "@/lib/domain/types";
 import { ServiceRow } from "@/components/services/service-row";
 
 interface ServiceListColumnProps {
-  category: ServiceCategory;
+  category: IServiceCategory;
   className?: string;
 }
 
@@ -22,14 +22,15 @@ export function ServiceListColumn({
       {/* Category heading */}
       <h2
         id={`category-${category.id}-heading`}
-        className="mb-6 font-serif text-2xl font-bold text-gray-900"
+        className="mb-6 font-serif text-2xl font-bold text-gray-900
+                   dark:text-gray-100"
       >
-        {category.title}
+        {category.name}
       </h2>
 
       {/* Service list */}
       <ul role="list" className="flex flex-col">
-        {category.items.map((item) => (
+        {category.services.map((item) => (
           <ServiceRow key={item.id} service={item} />
         ))}
       </ul>

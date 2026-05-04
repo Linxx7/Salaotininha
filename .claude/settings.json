@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/ricar/Desktop/Salaotininha/public/images\")",
+      "Bash(mv \"c:/Users/ricar/Desktop/Salaotininha/logo.jpg\" \"c:/Users/ricar/Desktop/Salaotininha/public/images/\")",
+      "Bash(mv \"c:/Users/ricar/Desktop/Salaotininha/Tabela de preços.jpeg\" \"c:/Users/ricar/Desktop/Salaotininha/public/images/\")",
+      "Bash(ls \"c:/Users/ricar/Desktop/Salaotininha/app/icon\"* \"c:/Users/ricar/Desktop/Salaotininha/app/favicon\"*)",
+      "Bash(ls \"c:/Users/ricar/Desktop/Salaotininha/public/favicon\"*)",
+      "Bash(npx next:*)",
+      "Bash(npm run:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\ricar\\Desktop\\Salaotininha",
+      "c:\\Users\\ricar\\Desktop\\Salaotininha\\lib"
+    ]
+  }
+}

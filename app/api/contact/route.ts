@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/validation/contactSchema";
 import { sanitizeObject } from "@/lib/validation/sanitize";
 import type { ContactResponse } from "@/lib/contact/contactTypes";
+import { sendContactEmail } from "@/lib/contact/emailService";
 
 export async function POST(request: Request) {
   try {
@@ -31,18 +32,18 @@ export async function POST(request: Request) {
     // Sanitize validated data
     const sanitized = sanitizeObject(result.data);
 
-    // TODO: integrate with email service (SendGrid, Resend, etc.) or CRM
-    console.log("[Contact]", sanitized);
+    await sendContactEmail(sanitized);
 
     return NextResponse.json<ContactResponse>({
       success: true,
       message: "Mensagem enviada com sucesso! Responderemos em breve.",
     });
-  } catch {
+  } catch (error) {
+    console.error("[Contact] Erro ao enviar email:", error);
     return NextResponse.json<ContactResponse>(
       {
         success: false,
-        message: "Erro interno. Por favor, tente novamente mais tarde.",
+        message: "Erro ao enviar mensagem. Por favor, tente novamente mais tarde.",
       },
       { status: 500 },
     );

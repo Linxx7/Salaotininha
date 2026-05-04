@@ -12,7 +12,6 @@ export type PortfolioCategory =
   | "Coloração"
   | "Corte"
   | "Química"
-  | "Unhas"
   | "Tratamento";
 
 /**
@@ -27,12 +26,12 @@ export interface PortfolioItem {
   id: string;
 
   /**
-   * URL-safe slug for a future detail page (e.g. /portfolio/balayage-dourado).
+   * URL-safe slug for a future detail page (e.g. /portfolio/corte-moderno).
    * Derived from id for now; will come from CMS slug field later.
    */
   slug: string;
 
-  /** Primary display title (e.g. "Balayage Dourado"). */
+  /** Primary display title (e.g. "Corte Moderno"). */
   title: string;
 
   /**
@@ -46,7 +45,7 @@ export interface PortfolioItem {
 
   /**
    * Absolute URL or relative path to the hero image.
-   * Use a Next.js-compatible path (e.g. "/images/portfolio/balayage.jpg")
+   * Use a Next.js-compatible path (e.g. "/images/gallery/corte-moderno.jpg")
    * or a Sanity CDN URL when the CMS is plugged in.
    */
   imageUrl: string;

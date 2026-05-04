@@ -3,7 +3,7 @@
 // Single Responsibility: each function builds one schema type
 
 import type { WithContext, LocalBusiness, FAQPage, Service as SchemaService } from "schema-dts";
-import type { FAQItem, Service } from "@/lib/domain/types";
+import type { FAQItem, IServiceItem } from "@/lib/domain/types";
 import { env } from "@/lib/env";
 
 const SITE_URL = env.NEXT_PUBLIC_SITE_URL;
@@ -69,22 +69,24 @@ export function buildFAQPageSchema(
 }
 
 export function buildServiceSchemas(
-  services: Service[],
+  services: IServiceItem[],
 ): WithContext<SchemaService>[] {
-  return services.map((service) => ({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.name,
-    description: service.description,
-    offers: {
-      "@type": "Offer" as const,
-      price: service.price,
-      priceCurrency: "BRL",
-    },
-    provider: {
-      "@type": "BeautySalon" as const,
-      name: "Salão Tininha",
-      url: SITE_URL,
-    },
-  }));
+  return services
+    .filter((s) => s.price_from !== null)
+    .map((service) => ({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: service.title,
+      description: service.description,
+      offers: {
+        "@type": "Offer" as const,
+        price: (service.price_from! / 100).toFixed(2),
+        priceCurrency: "BRL",
+      },
+      provider: {
+        "@type": "BeautySalon" as const,
+        name: "Salão Tininha",
+        url: SITE_URL,
+      },
+    }));
 }

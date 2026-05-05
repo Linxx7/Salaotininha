@@ -22,7 +22,7 @@ import type { PortfolioItem } from "@/lib/portfolio/portfolioTypes";
 export const metadata = buildPageMetadata({
   title: "Beleza & Estética",
   description:
-    "Salão de beleza premium no Sudoeste, Brasília. Cortes, coloração, tratamentos capilares, manicure e muito mais. Agende online!",
+    "Salão de beleza premium no Sudoeste, Brasília. Cortes, coloração, tratamentos capilares e muito mais. Agende online!",
   path: "/",
 });
 

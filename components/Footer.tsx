@@ -5,7 +5,6 @@ import Image from "next/image";
 const serviceLinks = [
   { href: "/servicos", label: "Corte & Escova" },
   { href: "/servicos", label: "Coloração" },
-  { href: "/servicos", label: "Manicure" },
   { href: "/servicos", label: "Máscaras e Hidratação" },
 ];
 

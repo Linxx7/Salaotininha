@@ -12,7 +12,7 @@ import { getAllServices } from "@/lib/data/services";
 export const metadata = buildPageMetadata({
   title: "Serviços",
   description:
-    "Conheça o menu completo de serviços do Salão Tininha: escovas, cortes, progressiva, hidratação e manicure. Agende seu horário online.",
+    "Conheça o menu completo de serviços do Salão Tininha: escovas, cortes, progressiva e hidratação. Agende seu horário online.",
   path: "/servicos",
 });
 

@@ -1,6 +1,6 @@
 // components/ServicesSection.tsx
 import Link from "next/link";
-import { Scissors, Palette, Hand, Sparkles } from "lucide-react";
+import { Scissors, Palette, Sparkles } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { SectionContainer } from "@/components/ui/section-container";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -23,14 +23,7 @@ const services = [
       "Do mechas ao babylights — do balayage ao colorido. Usamos produtos de alta performance para um resultado duradouro.",
     href: "/servicos",
   },
-  {
-    id: 3,
-    icon: Hand,
-    title: "Manicure & Pedicure",
-    description:
-      "Un cuidado completo para suas unhas com esmaltação de alta duração e técnicas modernas de nail art.",
-    href: "/servicos",
-  },
+
   {
     id: 4,
     icon: Sparkles,
